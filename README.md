@@ -31,6 +31,16 @@ Pull the latest version of the marketplace and its plugins:
 /plugin marketplace update
 ```
 
+## MCP Configuration
+
+The plugin ships with a `.mcp.json` that enables the [Context7 MCP server](https://github.com/upstash/context7-mcp) for up-to-date library documentation lookups. The API key is read from an environment variable — set it before starting Claude Code:
+
+```sh
+export CONTEXT7_API_KEY=<your-key>
+```
+
+Add this to your shell profile (e.g. `~/.zshrc`) to make it permanent.
+
 ## Project-level setup
 
 To make the plugin available automatically for everyone working on your Odra project, add this to `.claude/settings.json` in your repository:
