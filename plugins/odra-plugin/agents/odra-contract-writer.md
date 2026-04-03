@@ -28,13 +28,13 @@ Based on the task, read the relevant reference files before writing code:
 
 | Task involves... | Read this file |
 |---|---|
-| Storage fields (`Var`, `Mapping`, `List`, `Sequence`, `External`) | `../context/reference/storage.md` |
-| Entry points, constructors, payable, `self.env()` | `../context/reference/entry-points.md` |
-| Defining or emitting events | `../context/reference/events.md` |
-| Error enums, reverting, `unwrap_or_revert` | `../context/reference/errors.md` |
-| Cross-contract calls, `#[odra::external_contract]` | `../context/reference/cross-contract.md` |
-| Writing or fixing tests | `../context/reference/testing.md` |
-| CLI deploy scripts, scenarios, `load_or_deploy` | `../context/reference/deployment.md` |
+| Storage fields (`Var`, `Mapping`, `List`, `Sequence`, `External`) | `${CLAUDE_PLUGIN_ROOT}/context/reference/storage.md` |
+| Entry points, constructors, payable, `self.env()` | `${CLAUDE_PLUGIN_ROOT}/context/reference/entry-points.md` |
+| Defining or emitting events | `${CLAUDE_PLUGIN_ROOT}/context/reference/events.md` |
+| Error enums, reverting, `unwrap_or_revert` | `${CLAUDE_PLUGIN_ROOT}/context/reference/errors.md` |
+| Cross-contract calls, `#[odra::external_contract]` | `${CLAUDE_PLUGIN_ROOT}/context/reference/cross-contract.md` |
+| Writing or fixing tests | `${CLAUDE_PLUGIN_ROOT}/context/reference/testing.md` |
+| CLI deploy scripts, scenarios, `load_or_deploy` | `${CLAUDE_PLUGIN_ROOT}/context/reference/deployment.md` |
 
 Read only the files relevant to the current task. Do not load all reference files upfront.
 

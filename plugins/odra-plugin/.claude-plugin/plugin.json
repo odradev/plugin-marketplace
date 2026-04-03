@@ -1,5 +1,13 @@
 {
   "name": "odra",
   "description": "Streamlines an Odra project development",
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "repository": "https://github.com/odradev/odradev-plugins",
+  "homepage": "https://odradev.com/docs",
+  "keywords": [
+    "odra",
+    "rust",
+    "smart contracts",
+    "blockchain"
+  ]
 }
