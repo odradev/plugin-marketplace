@@ -60,7 +60,7 @@ obvious sense.
 - **The cross-call type is `{Module}ContractRef`**, and `new()` comes from the `ContractRef` trait —
   `use odra::ContractRef;` must be in scope wherever you construct one by hand.
 - **`ContractRef::new` takes `Rc<ContractEnv>`, never `&HostEnv`.** From a host-side test:
-  `Foo ContractRef::new(Rc::new(env.contract_env()), address)`.
+  `FooContractRef::new(Rc::new(env.contract_env()), address)`.
 - **`Deployer::deploy` is implemented on the module struct, not on the `ContractRef`.** Use
   `Foo::deploy(&env, args)`, which returns a `FooHostRef`.
 - **`.address()` comes from `Addressable`,** not `HostRef` — import `odra::prelude::Addressable`.
@@ -106,21 +106,32 @@ obvious sense.
 - **`ODRA_LOG_LEVEL=debug`** prints the full transaction JSON before it is sent — the fastest way to
   see what was actually signed.
 
-## Manual wasm pipeline
+## Building wasm
 
-Run `wasm-opt` **before** `wasm-strip`. Stripping first removes the sections `wasm-opt` needs and it
-fails with thousands of validation errors.
+**Always build through `cargo odra build` or `cargo odra test -b casper`.** They run the whole wasm
+pipeline for you. Never invoke `wasm-opt`/`wasm-strip` by hand to "fix" a build — doing so hides the
+real problem and gets the order wrong (stripping first removes the sections `wasm-opt` needs, which
+fails with thousands of validation errors).
 
-```bash
-wasm-opt --signext-lowering wasm/my_contract.wasm -o wasm/my_contract.wasm
-wasm-strip wasm/my_contract.wasm
-```
+A failure in those commands is almost always a missing tool, not a code problem. Read the message and
+install what it names, rather than working around it:
+
+| Message | Missing |
+| --- | --- |
+| `wasm32-unknown-unknown target is not present` | `rustup target add wasm32-unknown-unknown` — run it inside the project so it applies to the pinned nightly |
+| `There was an error while running wasm-opt - is it installed?` | binaryen (`brew install binaryen`) |
+| `There was an error while running wasm-strip - is it installed?` | wabt (`brew install wabt`) |
+| `wasm-pack is not installed` | wasm-pack, needed only by `cargo odra generate-client` |
+
+Driving `cargo` directly is a deliberate escape hatch for controlling feature flags, not a
+troubleshooting step; if you genuinely need it, follow the "Building contracts manually" page in the
+Odra docs rather than improvising.
 
 ## Odra CLI
 
 - The name in `CommandArg::new("number", ...)` and the key in `args.get_single::<u64>("number")` are
   matched at runtime, not compile time. A mismatch compiles fine and fails only when the scenario
-  runs. **The `full` template ships with exactly this bug** — its generated `bin/cli.rs` registers
-  `"number"` and reads `"name"`. Fix it in generated projects.
+  runs, with `Arg error: Unexpected arg: <name>`. Grep any scenario you write to confirm every
+  registered name has an exactly matching lookup key.
 - `--json` only formats the final report of a *successful* command. Errors and transaction-progress
   lines are always plain text, so parse the last JSON object in stdout rather than the whole stream.

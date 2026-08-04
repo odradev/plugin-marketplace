@@ -10,7 +10,7 @@ Add to `Cargo.toml`:
 
 ```toml
 [dependencies]
-odra-cli = "2.6.0"
+odra-cli = "2.9.0"
 
 [[bin]]
 name = "cli"

@@ -12,7 +12,7 @@ The `odra-modules` crate provides battle-tested implementations of common patter
 
 ```toml
 [dependencies]
-odra-modules = "2.6.0"
+odra-modules = "2.9.0"
 ```
 
 ## Composing modules with `SubModule<T>`
