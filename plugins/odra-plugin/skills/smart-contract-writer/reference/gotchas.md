@@ -8,6 +8,10 @@ obvious sense.
 
 ## Project setup
 
+- **Never hand-create a project — scaffold it.** `cargo odra new --name <snake_case> -t <template>`.
+  A project has interlocking parts (`Odra.toml`, `build.rs`, three `[[bin]]` targets, a pinned
+  `rust-toolchain`, a `cfg(not(target_arch = "wasm32"))` dependency section); writing them by hand
+  produces something that looks right and fails later in ways that read as contract bugs.
 - **The project pins a nightly toolchain.** A generated project contains a `rust-toolchain` file
   (e.g. `nightly-2026-01-01`). rustup installs it on first build, so the first `cargo odra test` is
   slow. `rustup target add wasm32-unknown-unknown` must apply to *that* toolchain — run it from

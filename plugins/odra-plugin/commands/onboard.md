@@ -24,13 +24,25 @@ Invoke `/odra-plugin:check-env`. If any required tools are missing, help the use
 
 ---
 
-## Step 2 — Your First Contract
+## Step 2 — Create the Project
 
-### 2a — Explain the Odra model
+Tell the user:
+
+> Now let's scaffold a project. Odra ships templates, and we'll use one — a generated project wires
+> up several files that are easy to get subtly wrong by hand.
+
+Invoke `/odra-plugin:new-project`. Skip this step only if the user is already inside a project
+(an `Odra.toml` exists).
+
+---
+
+## Step 3 — Your First Contract
+
+### 3a — Explain the Odra model
 
 Before generating code, explain to the user a high-level overview of how Odra contracts are structured and how they work.
 
-### 2b — Gather requirements
+### 3b — Gather requirements
 
 Ask the user what kind of contract they want to build. 
 Always use the `AskUserQuestion` tool to suggest simple examples if they're unsure:
@@ -38,11 +50,11 @@ Always use the `AskUserQuestion` tool to suggest simple examples if they're unsu
 - A greeting contract that stores and returns a message
 - A simple token with balances
 
-### 2c — Generate the contract
+### 3c — Generate the contract
 
 Invoke the `smart-contract-writer` skill to write the code to the user's requirements.
 
-### 2d — Explain what was generated
+### 3d — Explain what was generated
 
 After generation, walk through the generated code and explain:
 
@@ -56,9 +68,9 @@ After generation, walk through the generated code and explain:
 
 ---
 
-## Step 3 — Test Your Contract
+## Step 4 — Test Your Contract
 
-### 3a — Explain testing
+### 4a — Explain testing
 
 > **Testing in Odra:**
 >
@@ -66,17 +78,17 @@ After generation, walk through the generated code and explain:
 >
 > `odra_test::env()` creates a test environment. `ModuleName::deploy(&env, args)` deploys your contract into this environment. Then you call methods on the returned `HostRef` just like regular Rust method calls.
 
-### 3b — Run the tests
+### 4b — Run the tests
 
 Invoke the `/odra-plugin:test-contracts` skill.
 
-### 3c — Celebrate
+### 4c — Celebrate
 
 > Your contract compiles and passes tests. You've written a working Odra smart contract.
 
 ---
 
-## Step 4 — Deploy to a Local Node (Optional)
+## Step 5 — Deploy to a Local Node (Optional)
 
 Ask the user:
 
@@ -84,7 +96,7 @@ Ask the user:
 
 If they want to continue:
 
-### 4a — Explain what's happening
+### 5a — Explain what's happening
 
 > **From OdraVM to a real node:**
 >
@@ -92,7 +104,7 @@ If they want to continue:
 >
 > The CLI tool (`cli/cli.rs`) handles deployment. The deploy script you saw earlier tells it which contracts to deploy and with what arguments.
 
-### 4b — Build WASM
+### 5b — Build WASM
 
 If didn't trigger tests on `CasperVM` build contracts:
 
@@ -102,21 +114,21 @@ cargo odra build
 
 Explain: this compiles contracts to `.wasm` files in the `wasm/` directory.
 
-### 4c — Start the node
+### 5c — Start the node
 
 Invoke `/odra-plugin:setup-nctl`.
 
-### 4d — Deploy
+### 5d — Deploy
 
 Invoke `/odra-plugin:deploy-to-livenet` targeting nctl.
 
-### 4e — Explain what happened
+### 5e — Explain what happened
 
 > Your contract is now deployed on a local Casper blockchain. The deploy hash is a unique identifier for this deployment. The CLI stored the contract address so future runs can interact with it without redeploying.
 
 ---
 
-## Step 5 — What's Next
+## Step 6 — What's Next
 
 > **You've completed the Odra onboarding.** Here's what you can do next:
 >
