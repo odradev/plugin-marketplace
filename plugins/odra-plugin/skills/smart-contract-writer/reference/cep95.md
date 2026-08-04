@@ -260,7 +260,8 @@ impl TicketOffice {
         self.ownable.assert_owner(&caller);
 
         let ticket_id = self.token_id_counter.get_or_default();
-        self.token.mint(caller, ticket_id, Default::default());
+        // Cep95 exposes only the unguarded `raw_mint`; the owner check above is the guard.
+        self.token.raw_mint(caller, ticket_id, Default::default());
 
         self.tickets.set(
             &ticket_id,

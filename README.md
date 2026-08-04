@@ -31,16 +31,6 @@ Pull the latest version of the marketplace and its plugins:
 /plugin marketplace update
 ```
 
-## MCP Configuration
-
-The plugin ships with a `.mcp.json` that enables the [Context7 MCP server](https://github.com/upstash/context7-mcp) for up-to-date library documentation lookups. The API key is read from an environment variable — set it before starting Claude Code:
-
-```sh
-export CONTEXT7_API_KEY=<your-key>
-```
-
-Add this to your shell profile (e.g. `~/.zshrc`) to make it permanent.
-
 ## Project-level setup
 
 To make the plugin available automatically for everyone working on your Odra project, add this to `.claude/settings.json` in your repository:
@@ -54,7 +44,7 @@ To make the plugin available automatically for everyone working on your Odra pro
         "repo": "odradev/odradev-plugins"
       }
     }
-  }
+  },
   "enabledPlugins": {
     "odra-plugin@odradev-plugins": true
   }
@@ -67,9 +57,19 @@ Anyone who clones the repo and trusts the project folder will be prompted to ins
 
 ```
 .claude-plugin/
-  marketplace.json       # Marketplace catalog
+  marketplace.json           # Marketplace catalog
 plugins/
-  odra-plugin/           # The Odra development plugin
+  odra-plugin/
+    .claude-plugin/
+      plugin.json            # Plugin manifest
+    commands/
+      onboard.md             # Guided walkthrough
+    skills/
+      check-env/             # Verify the toolchain is installed
+      setup-nctl/            # Start and configure a local Casper node
+      deploy-to-livenet/     # Deploy to nctl, testnet or mainnet
+      smart-contract-writer/ # Write and fix contracts (+ reference/)
+      test-contracts/        # Run tests on OdraVM and/or CasperVM
 README.md
 ```
 

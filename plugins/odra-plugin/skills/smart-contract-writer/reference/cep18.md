@@ -159,6 +159,7 @@ pub enum GovernanceError {
     VoteNotYetEnded = 2,
     VoteEnded = 3,
     OnlyTokenHoldersCanPropose = 4,
+    Unauthorized = 5,
 }
 ```
 
@@ -199,7 +200,10 @@ impl OurToken {
 
     /// Burn tokens — caller must be the owner of the tokens.
     pub fn burn(&mut self, owner: &Address, amount: &U256) {
-        self.token.assert_caller(owner);
+        // Cep18 has no `assert_caller` - check the caller yourself.
+        if &self.env().caller() != owner {
+            self.env().revert(GovernanceError::Unauthorized);
+        }
         self.token.raw_burn(owner, amount);
     }
 
