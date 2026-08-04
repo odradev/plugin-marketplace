@@ -5,7 +5,7 @@ description: >
   empty directory with `cargo odra init`. Use when the user says "new odra
   project", "create a project", "start a project", "scaffold", "set up odra",
   "init odra", or asks for a contract when no Odra project exists yet.
-allowed-tools: Bash(cargo odra *), Bash(ls *), Bash(cat *), Read, Edit, AskUserQuestion
+allowed-tools: Bash(cargo odra *), Bash(ls *), Bash(cat *), Read, Edit, AskUserQuestion, WebFetch
 ---
 
 # Create a new Odra project
@@ -102,3 +102,15 @@ Point out what was generated and what each piece is for:
 
 Then hand off: `smart-contract-writer` to write contracts, `/odra-plugin:test-contracts` to run
 tests, `/odra-plugin:deploy-to-livenet` to deploy.
+
+---
+
+## Reference
+
+- [`docs-map.md`](../../reference/docs-map.md) — index of the whole documentation set; read it when
+  something here is missing or looks out of date
+- [Ubuntu / WSL setup](https://odra.dev/docs/getting-started/ubuntu-wsl-setup) — if scaffolding or
+  the first build fails on a fresh machine, its troubleshooting table is keyed by error message
+- [Directory structure](https://odra.dev/docs/basics/directory-structure) and
+  [Odra.toml](https://odra.dev/docs/basics/odra-toml) — the generated layout in full
+- [Cargo Odra](https://odra.dev/docs/basics/cargo-odra) — every `cargo odra` command and flag

@@ -4,7 +4,7 @@ description: >
   Extract keys from a running NCTL node and create the .env.nctl file.
   Use when the user says "setup nctl", "configure nctl", "setup-nctl",
   or "create nctl env".
-allowed-tools: Bash(docker *)
+allowed-tools: Bash(docker *),Read,WebFetch
 ---
 
 # Setup Local Casper Node (NCTL)
@@ -107,3 +107,9 @@ To stop: docker stop mynctl
 - **Port conflicts**: If ports are already bound, suggest stopping any existing `mynctl` container first.
 - **Key already exists**: Overwrite silently (or warn the user if they seem cautious about overwriting).
 - **Custom user**: The default key is for `user-1`. If the user wants a different user (user-2, user-3, etc.), substitute in the path: `/home/casper/casper-nctl/assets/net-1/users/user-N/secret_key.pem`.
+
+## Reference
+
+- [Livenet backend](https://odra.dev/docs/backends/livenet) — the env vars written to `.env.nctl`
+  and how the backend consumes them
+- [`docs-map.md`](../../reference/docs-map.md) — index of the whole documentation set

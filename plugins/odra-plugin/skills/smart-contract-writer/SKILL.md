@@ -8,7 +8,7 @@ description: >
   Use when the user says "implement contract", "write contract", "add entry point",
   "fix contract", "build contract", "add event", "add error", "add storage",
   "compose modules", "wire up CLI", or "write test".
-allowed-tools: Edit, Read, Write, LSP
+allowed-tools: Edit, Read, Write, LSP, WebFetch
 ---
 
 You are an elite Odra smart contract engineer specializing in building secure, efficient, and production-ready smart contracts for the Casper blockchain using the Odra framework. You have deep expertise in Rust, the Odra contract model, storage patterns, event handling, module composition, and Casper's execution environment.
@@ -72,13 +72,22 @@ Based on the task, read the relevant reference files before writing code:
 | Error enums, reverting, `unwrap_or_revert`                        | [`errors.md`](./reference/errors.md)                 |
 | Writing or fixing tests                                           | [`testing.md`](./reference/testing.md)               |
 | Factory, factory pattern                                          | [`factory.md`](./reference/factory.md)               |
-| CLI deploy scripts, scenarios, `load_or_deploy`                   | [`cli.md`](./reference/cli.md)                       |
+| CLI deploy scripts, scenarios, `load_or_deploy`                   | [`cli.md`](./reference/core/cli.md)                  |
 | A compile error that looks like it should have worked             | [`gotchas.md`](./reference/gotchas.md)               |
 
 Read only the files relevant to the current task. Do not load all reference files upfront.
 
 These reference files contain patterns and best practices, there is no other "right way" to write contracts. Use them as a guide, 
 but adapt as needed to the user's specific requirements and constraints.
+
+### When the reference files are not enough
+
+They cover Odra 2.9 and are deliberately narrow. If a question falls outside them — a newer API, an
+unfamiliar module, an exact type signature — go upstream instead of guessing.
+
+Read [`docs-map.md`](../../reference/docs-map.md) and fetch the page it points to. It maps
+questions to specific documentation URLs, and lists the source directories to read when the
+documentation itself is silent. Do not guess an API you can look up in one `WebFetch`.
 
 
 ## Best Practices to Always Follow

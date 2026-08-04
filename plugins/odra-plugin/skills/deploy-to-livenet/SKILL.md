@@ -4,7 +4,7 @@ description: >
   Deploy contracts to a Casper network (nctl, testnet, or mainnet).
   Use when the user says "deploy", "deploy to livenet", "deploy to nctl",
   "deploy to testnet", "deploy to mainnet", "run on livenet", or "deploy-to-livenet".
-allowed-tools: Bash(docker ps *),Bash(cargo *),Skill(setup-nctl)
+allowed-tools: Bash(docker ps *),Bash(cargo *),Skill(setup-nctl),Read,WebFetch
 ---
 
 # Deploy Contracts to Livenet
@@ -92,3 +92,15 @@ Ask the user if they want to remove the NCTL container. If yes:
 1. Stop the container: `docker stop mynctl`
 2. Remove keys: `rm -rf .node-keys`
 3. Remove a related `*-contracts.toml` under `resources/` if it exists.
+
+---
+
+## Reference
+
+- [Livenet backend](https://odra.dev/docs/backends/livenet) — env vars, deploy flow, gas handling
+- [Deploying a Token on Casper Livenet](https://odra.dev/docs/tutorials/deploying-on-casper) — a
+  complete worked deployment
+- [Upgrading Contracts](https://odra.dev/docs/tutorials/upgrades) — redeploying over an existing
+  contract
+- [Odra CLI](https://odra.dev/docs/tutorials/odra-cli) — the `bin/cli.rs` scenarios this skill runs
+- [`docs-map.md`](../../reference/docs-map.md) — index of the whole documentation set

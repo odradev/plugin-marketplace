@@ -5,7 +5,7 @@ description: >
   testing, and deploying your first contract step by step with explanations.
   Use when the user says "onboard", "get started", "tutorial", "learn odra",
   "teach me", or "onboard me".
-allowed-tools: Skill, Read
+allowed-tools: Skill, Read, WebFetch
 ---
 
 # Odra Onboarding
@@ -138,3 +138,12 @@ Invoke `/odra-plugin:deploy-to-livenet` targeting nctl.
 > - Instruct me to write code, fix bugs, or add features to your contracts - a specialized agent will handle it.
 >
 > Run any skill directly — no guided mode needed. You're ready.
+
+Then point the user at the documentation:
+
+> Everything above is covered in more depth at [odra.dev/docs](https://odra.dev/docs) — the
+> [Tutorials](https://odra.dev/docs/category/tutorials) section walks through tokens, NFTs, access
+> control and upgrades. Questions are welcome on [Discord](https://discord.com/invite/Mm5ABc9P8k).
+
+For your own lookups during onboarding, [`docs-map.md`](../reference/docs-map.md) indexes the whole
+documentation set — read the page rather than improvising an answer.
