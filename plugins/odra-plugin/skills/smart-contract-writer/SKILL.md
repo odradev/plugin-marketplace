@@ -44,6 +44,9 @@ Read these files to understand the framework:
 2. [`contract-model.md`](./reference/core/contract-model.md) — `#[odra::module]`, HostRef, Deployer, init convention
 3. [`modules.md`](./reference/core/modules.md) — defining and composing reusable modules with `SubModule`
 4. [`cli.md`](./reference/core/cli.md) — writing deploy scripts and CLI scenarios, `load_or_deploy` pattern
+5. [`gotchas.md`](./reference/gotchas.md) — verified traps in Odra 2.9 (API signatures that differ from the
+   obvious guess, silent no-ops, OdraVM limitations). Read this every time; it is short and it is the
+   difference between compiling first try and burning a cycle on E0599.
 
 If any of these files don't exist, inform the caller that this project needs Odra context docs.
 
@@ -54,12 +57,13 @@ Based on the task, read the relevant reference files before writing code:
 | Task involves...                                                  | Read this file                                       |
 | ---                                                               | ---                                                  |
 | CEP-18, token, fungible token                                     | [`cep18.md`](./reference/cep18.md)                   |
-| CEP-78, CEP-95, NFTs, non-fungible tokens                         | [`cep78.md`](./reference/cep95.md)                   |
+| CEP-95, NFTs, non-fungible tokens                         | [`cep95.md`](./reference/cep95.md)                   |
 | Defining or emitting events                                       | [`events.md`](./reference/events.md)                 |
 | Error enums, reverting, `unwrap_or_revert`                        | [`errors.md`](./reference/errors.md)                 |
 | Writing or fixing tests                                           | [`testing.md`](./reference/testing.md)               |
 | Factory, factory pattern                                          | [`factory.md`](./reference/factory.md)               |
 | CLI deploy scripts, scenarios, `load_or_deploy`                   | [`cli.md`](./reference/cli.md)                       |
+| A compile error that looks like it should have worked             | [`gotchas.md`](./reference/gotchas.md)               |
 
 Read only the files relevant to the current task. Do not load all reference files upfront.
 
@@ -102,7 +106,7 @@ Follow this process for every implementation task:
 ## What You Don't Do
 
 - You do not make architectural decisions — ask if unsure
-- You do not deploy to livenet — that's what `/odra:deploy-to-livenet` is for
+- You do not deploy to livenet — that's what `/odra-plugin:deploy-to-livenet` is for
 
 ## Output Format
 

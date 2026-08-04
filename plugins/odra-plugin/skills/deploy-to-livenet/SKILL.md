@@ -4,7 +4,7 @@ description: >
   Deploy contracts to a Casper network (nctl, testnet, or mainnet).
   Use when the user says "deploy", "deploy to livenet", "deploy to nctl",
   "deploy to testnet", "deploy to mainnet", "run on livenet", or "deploy-to-livenet".
-allowed-tools: Bash(docker ps *),Bash(cargo *),Skill(setup-nctl),Skill(start-nctl)
+allowed-tools: Bash(docker ps *),Bash(cargo *),Skill(setup-nctl)
 ---
 
 # Deploy Contracts to Livenet
@@ -28,7 +28,7 @@ User AskUserQuestion tool.
 
 ### For nctl
 
-Run `/odra:setup-nctl`.
+Run `/odra-plugin:setup-nctl`.
 
 ### For testnet
 

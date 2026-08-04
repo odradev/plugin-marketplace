@@ -13,7 +13,7 @@ case "$NETWORK" in
     ENV_FILE=".env.nctl"
     # Verify NCTL Docker container is running
     if ! docker ps --filter name=mynctl --format '{{.Names}}' | grep -q mynctl; then
-      echo "Error: NCTL container is not running. Start it first with /start-nctl." >&2
+      echo "Error: NCTL container is not running. Start it first with /odra-plugin:setup-nctl." >&2
       exit 1
     fi
     ;;

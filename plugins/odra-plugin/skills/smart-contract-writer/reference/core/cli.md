@@ -242,7 +242,7 @@ ODRA_CASPER_LIVENET_CHAIN_NAME=casper-net-1
 
 | Network | `CHAIN_NAME` | Node setup |
 |---|---|---|
-| nctl (local) | `casper-net-1` | Docker — use `/start-nctl` skill |
+| nctl (local) | `casper-net-1` | Docker — use `/odra-plugin:setup-nctl` skill |
 | Testnet | `casper-test` | Public node or self-hosted |
 | Mainnet | `casper` | Public node or self-hosted |
 

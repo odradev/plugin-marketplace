@@ -20,7 +20,7 @@ Tell the user:
 
 > Let's make sure your development environment is set up. I'll check for all the required tools.
 
-Invoke `/check-env`. If any required tools are missing, help the user install them before continuing. Docker is optional at this stage — it's only needed for the deployment step later.
+Invoke `/odra-plugin:check-env`. If any required tools are missing, help the user install them before continuing. Docker is optional at this stage — it's only needed for the deployment step later.
 
 ---
 
@@ -40,7 +40,7 @@ Always use the `AskUserQuestion` tool to suggest simple examples if they're unsu
 
 ### 2c — Generate the contract
 
-`odra-contract-writer` agent writes code with the user's requirements.
+Invoke the `smart-contract-writer` skill to write the code to the user's requirements.
 
 ### 2d — Explain what was generated
 
@@ -68,7 +68,7 @@ After generation, walk through the generated code and explain:
 
 ### 3b — Run the tests
 
-Invoke `/test-contracts` skill.
+Invoke the `/odra-plugin:test-contracts` skill.
 
 ### 3c — Celebrate
 
@@ -104,11 +104,11 @@ Explain: this compiles contracts to `.wasm` files in the `wasm/` directory.
 
 ### 4c — Start the node
 
-Invoke `/start-nctl`.
+Invoke `/odra-plugin:setup-nctl`.
 
 ### 4d — Deploy
 
-Invoke `/deploy-to-livenet` targeting nctl.
+Invoke `/odra-plugin:deploy-to-livenet` targeting nctl.
 
 ### 4e — Explain what happened
 
@@ -120,9 +120,9 @@ Invoke `/deploy-to-livenet` targeting nctl.
 
 > **You've completed the Odra onboarding.** Here's what you can do next:
 >
-> - `/odra:deploy-to-livenet` — deploy to testnet or mainnet
-> - `/odra:setup-nctl` — set up a local node for testing and development
-> - `/odra:test-contracts` — run tests on OdraVM or/and CasperVM
+> - `/odra-plugin:deploy-to-livenet` — deploy to testnet or mainnet
+> - `/odra-plugin:setup-nctl` — set up a local node for testing and development
+> - `/odra-plugin:test-contracts` — run tests on OdraVM or/and CasperVM
 > - Instruct me to write code, fix bugs, or add features to your contracts - a specialized agent will handle it.
 >
 > Run any skill directly — no guided mode needed. You're ready.

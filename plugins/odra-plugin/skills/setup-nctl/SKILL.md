@@ -104,6 +104,6 @@ To stop: docker stop mynctl
 ## Edge Cases
 
 - **Docker not running**: If `docker run` fails with a connection error, tell the user Docker Desktop may not be running.
-- **Port conflicts**: If ports are already bound, suggest stopping any ewqxisting `mynctl` container first.
+- **Port conflicts**: If ports are already bound, suggest stopping any existing `mynctl` container first.
 - **Key already exists**: Overwrite silently (or warn the user if they seem cautious about overwriting).
 - **Custom user**: The default key is for `user-1`. If the user wants a different user (user-2, user-3, etc.), substitute in the path: `/home/casper/casper-nctl/assets/net-1/users/user-N/secret_key.pem`.

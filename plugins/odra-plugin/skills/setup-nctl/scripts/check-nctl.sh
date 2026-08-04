@@ -8,6 +8,6 @@ if docker ps --filter name=mynctl --format '{{.Names}}' | grep -q mynctl; then
   echo "NCTL container is running." >&2
   exit 0
 else
-  echo "Error: NCTL container is not running. Start it first with /start-nctl." >&2
+  echo "Error: NCTL container is not running. Start it first with /odra-plugin:setup-nctl." >&2
   exit 1
 fi
