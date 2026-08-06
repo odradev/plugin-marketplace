@@ -18,21 +18,24 @@ cargo odra test
 
 Running tests on `CasperVM`:
 
-First, check if WASMs need to be rebuilt:
-
 ```bash
-./scripts/needs_rebuild.sh
+cargo odra test -b casper
 ```
 
-Then run tests with the appropriate flag based on the result:
+This builds every contract in `Odra.toml` to wasm, runs `wasm-opt` and `wasm-strip` over each one,
+and then executes the same tests against Casper's execution engine. `cargo odra` tracks whether the
+wasm is stale, so there is no separate rebuild step to decide on — pass `--skip-build` only when you
+have just built and want to reuse the existing wasm.
 
-```bash
-# If rebuild is needed (needs_rebuild.sh exited 0):
-./scripts/run_tests.sh --rebuild
+:::note
+The `full`, `blank`, `cep18` and `cep95` templates do **not** generate a `scripts/` directory. Do not
+look for `scripts/needs_rebuild.sh` or `scripts/run_tests.sh` — drive `cargo odra test` directly. If a
+particular project happens to have its own `scripts/`, those are the user's, not Odra's.
+:::
 
-# If no rebuild is needed (needs_rebuild.sh exited 1):
-./scripts/run_tests.sh
-```
+CasperVM runs require the `wasm32-unknown-unknown` target plus `wasm-opt` and `wasm-strip` on
+`PATH`; OdraVM requires none of them. If `-b casper` fails on tooling rather than on a test
+assertion, run `/odra-plugin:check-env` before touching the contract.
 
 If tests fail, help the user fix the issues. Explain any errors in context.
 

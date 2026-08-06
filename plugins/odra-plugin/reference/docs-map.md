@@ -29,6 +29,7 @@ docs build. If a page below 404s, fetch `llms.txt` — it is authoritative and t
 | The question | The page |
 | --- | --- |
 | Which tools do I need installed? | [Installation](https://odra.dev/docs/getting-started/installation) |
+| Setup is failing on macOS | [macOS setup](https://odra.dev/docs/getting-started/macos-setup) — troubleshooting table keyed by error message |
 | Setup is failing on Ubuntu or WSL | [Ubuntu / WSL setup](https://odra.dev/docs/getting-started/ubuntu-wsl-setup) — troubleshooting table keyed by error message |
 | What do the generated files do? | [Directory structure](https://odra.dev/docs/basics/directory-structure) |
 | How do I register a contract for building? | [Odra.toml](https://odra.dev/docs/basics/odra-toml) |
@@ -48,6 +49,9 @@ docs build. If a page below 404s, fetch `llms.txt` — it is authoritative and t
 
 - [Installation](https://odra.dev/docs/getting-started/installation) — prerequisites, installing
   `cargo-odra`, creating and testing a first project
+- [macOS setup](https://odra.dev/docs/getting-started/macos-setup) — the same process with exact,
+  verified commands for Apple silicon and Intel Macs, plus a troubleshooting table keyed by error
+  message. Use it for any "how do I install X" question on macOS.
 - [Ubuntu / WSL setup](https://odra.dev/docs/getting-started/ubuntu-wsl-setup) — the same process
   with exact, verified commands for Ubuntu and WSL, plus a troubleshooting table keyed by error
   message. Use it for any "how do I install X" question on Linux.
